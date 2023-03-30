@@ -1,0 +1,2 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/rteet/OneDrive/Desktop/Projects/Animations/media/videos/bingMade/1080p60/partial_movie_files/RateFunctionsExample/1413466013_2645704736_2744450154.mp4'

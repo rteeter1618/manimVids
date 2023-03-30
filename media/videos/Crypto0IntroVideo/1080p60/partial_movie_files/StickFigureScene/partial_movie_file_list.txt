@@ -1,0 +1,8 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/rteet/OneDrive/Desktop/Animations/media/videos/Crypto0IntroVideo/1080p60/partial_movie_files/StickFigureScene/2902699114_4282471007_223132457.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Animations/media/videos/Crypto0IntroVideo/1080p60/partial_movie_files/StickFigureScene/3931933789_4023225438_359913990.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Animations/media/videos/Crypto0IntroVideo/1080p60/partial_movie_files/StickFigureScene/3931933789_2647712133_359913990.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Animations/media/videos/Crypto0IntroVideo/1080p60/partial_movie_files/StickFigureScene/3931933789_4292952837_359913990.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Animations/media/videos/Crypto0IntroVideo/1080p60/partial_movie_files/StickFigureScene/3931933789_3007919646_359913990.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Animations/media/videos/Crypto0IntroVideo/1080p60/partial_movie_files/StickFigureScene/3931933789_2421616057_359913990.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Animations/media/videos/Crypto0IntroVideo/1080p60/partial_movie_files/StickFigureScene/3931933789_329969645_459944602.mp4'

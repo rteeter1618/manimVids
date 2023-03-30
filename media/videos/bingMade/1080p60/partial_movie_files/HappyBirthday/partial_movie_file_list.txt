@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/rteet/OneDrive/Desktop/Projects/Animations/media/videos/bingMade/1080p60/partial_movie_files/HappyBirthday/1413466013_3198826633_514747228.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Projects/Animations/media/videos/bingMade/1080p60/partial_movie_files/HappyBirthday/1672018281_329969645_4205043057.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Projects/Animations/media/videos/bingMade/1080p60/partial_movie_files/HappyBirthday/1672018281_2645780074_2093060147.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Projects/Animations/media/videos/bingMade/1080p60/partial_movie_files/HappyBirthday/1672018281_3770784015_4170029958.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Projects/Animations/media/videos/bingMade/1080p60/partial_movie_files/HappyBirthday/1672018281_1643091061_259655704.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/Projects/Animations/media/videos/bingMade/1080p60/partial_movie_files/HappyBirthday/1672018281_329969645_2020084699.mp4'
