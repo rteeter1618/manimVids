@@ -1,0 +1,2 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto0IntroVideo/2160p60/partial_movie_files/Thumbnail/139003253_345352296_2560607297.mp4'

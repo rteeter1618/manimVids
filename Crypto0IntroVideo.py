@@ -6,7 +6,7 @@ class crypto0Main(Scene):
         youPerson = makePerson(color=BLUE).shift(5*LEFT)
         self.play(Create(youPerson), Write(youText))
 
-        #self.wait(3)
+        self.wait(1)
 
         eveText = Tex("Eve", color=GREEN).shift(1.8*DOWN)
         evePerson = makePerson(color=GREEN)
@@ -15,11 +15,13 @@ class crypto0Main(Scene):
         stripe2 = Line([-.13,2.2,0], [.13,2.2,0], color = GREEN)
         eveHat = VGroup(eveHatTriangle, stripe1, stripe2)
         eveList = [evePerson, eveText, eveHat]
-        self.play(Create(evePerson), Write(eveText), Create(eveHat))
+        self.play(Create(evePerson), Write(eveText))
 
-        self.play(Transform(evePerson, changeMood(evePerson, "happy", GREEN)))
+        self.wait(1)
 
-        self.wait()
+        self.play(Transform(evePerson, changeMood(evePerson, "happy", GREEN)), Create(eveHat))
+
+        self.wait(1)
 
         recipients = []
         for i in range(-1,2):
@@ -27,7 +29,7 @@ class crypto0Main(Scene):
         for p in recipients:
             self.play(Create(p), run_time=.3)
         
-        #self.wait()
+        self.wait()
 
         self.play(*[Transform(x, x.copy().shift(10*DOWN)) for x in eveList])
         # self.play(Transform(evePerson, evePerson.copy().shift(10*DOWN)),
@@ -45,7 +47,7 @@ class crypto0Main(Scene):
         self.play(Create(inviteTextGroup),
                   Create(inviteBox))
 
-        #self.wait()
+        self.wait()
 
         #sending notes to recipients
         newNotes = []
@@ -61,18 +63,18 @@ class crypto0Main(Scene):
 
         self.play(*[Transform(recip, changeMood(recip, "happy", RED, size=.4)) for recip in recipients])
 
-        #self.wait()
+        self.wait()
 
         #shift eve back up
         self.play(*[Transform(x, x.copy().shift(10*UP, 2*RIGHT)) for x in eveList])
 
-        #self.wait()
+        self.wait()
 
         self.play(*[Transform(recip, changeMood(recip, "sad", RED, size=.4)) for recip in recipients],
                   Transform(youPerson, changeMood(youPerson, "sad", BLUE)),
                   Transform(evePerson, changeMood(evePerson, "sad", GREEN)))
         
-        #self.wait()
+        self.wait()
 
         #ADD INTRO!!!!!
 
@@ -83,7 +85,7 @@ class crypto0Main(Scene):
         self.play(Write(googleText), run_time = .6)
         self.play(Write(bankText), run_time = .6)
 
-        #self.wait()
+        self.wait()
 
         #changing text on invites
         secretNoteBox = Rectangle(height=2, width=2)
@@ -108,11 +110,11 @@ class crypto0Main(Scene):
             secretNotes.append(secretNote)
         self.play(*[ReplacementTransform(newNotes[i], secretNotes[i]) for i in range(0, len(newNotes))])
 
-        #self.wait()
+        self.wait()
 
         self.play(Transform(evePerson, changeMood(evePerson, "evil", GREEN)))
 
-        #self.wait()
+        self.wait()
 
         #changing message to random
         secretNoteBox = Rectangle(height=2, width=2)
@@ -137,7 +139,7 @@ class crypto0Main(Scene):
             secretNotesEncrypted.append(secretNoteEncrypted)
         self.play(*[Transform(secretNotes[i], secretNotesEncrypted[i]) for i in range(0, len(secretNotes))])
 
-        #self.wait()
+        self.wait()
         
         self.play(Transform(evePerson, changeMood(evePerson, "thinking", GREEN)),
                   Transform(eveHat, eveHat.copy().shift(.2*LEFT)))
@@ -151,71 +153,62 @@ class crypto0Main(Scene):
 
         self.play(Circumscribe(VGroup(youPerson, youText)), run_time=1)
 
-        #self.wait()
+        self.wait()
 
         #self.play(*[Indicate(x) for x in eveList], run_time=1.5)
         eveGroup = VGroup(evePerson, eveHat, eveText)
         self.play(Circumscribe(eveGroup, run_time=1))
 
-        #self.wait()
+        self.wait()
         self.play(*[self.clearSceneFunc(obj) for obj in self.mobjects if self.clearSceneFunc(obj)!=1])
 
         self.wait()
 
         #crypto0Scene2().construct()
-    
-    def clearSceneFunc(self, obj):
-        try:
-            return Uncreate(obj)
-        except:
-            return 1
-
-
-
-class crypto0Scene2(Scene):
-    def construct(self):
+#class crypto0Scene2(Scene):
+    #def construct(self):
         register_font("roboto_mono")
         #Cryptography, Cryptanalysis, 
         definitionsText = Text("Jargon").to_edge(UP, buff=1).scale(1.2)
         
         self.play(Write(definitionsText, run_time=1))
 
-        #self.wait()
+        self.wait()
 
         smallSize = .75
 
         cryptography = MarkupText('<gradient from="GREEN" to="BLUE"> Cryptography = code making </gradient>')
         cryptography.scale(smallSize)
         cryptography.move_to(Point([-3.55,1,0]))
-        self.play(Write(cryptography, run_time=1))
+        self.play(Write(cryptography, run_time=2))
 
-        #self.wait()
+        self.wait()
 
         cryptanalysis = MarkupText('<gradient from="RED" to="ORANGE"> Cryptanalysis = code breaking </gradient>').scale(smallSize)
         cryptanalysis.next_to(cryptography, RIGHT, buff=.4)
-        self.play(Write(cryptanalysis, run_time=1))
+        self.play(Write(cryptanalysis, run_time=2))
 
-        #self.wait()
+        self.wait()
 
         cryptology = Text("Cryptology = both!").shift(DOWN)
         self.play(Write(cryptology, run_time=1))
 
-        #self.wait()
+        self.wait()
 
         self.play(Unwrite(cryptology), Unwrite(cryptography), Unwrite(cryptanalysis), run_time=1)
 
-        #self.wait()
+        self.wait()
 
         #pt and CT example
         plaintext = Text("plaintext", font="Courier New")
         self.play(Write(plaintext))
         
-        #self.wait()
+        self.wait()
 
         pt = Text("pt: ", font="Courier New").shift(UP)
         self.play(ReplacementTransform(plaintext, pt))
 
-        #self.wait()
+        self.wait()
 
         plaintextDef = MarkupText('<gradient from="GREEN" to="BLUE">this is a secret message to sub</gradient>', font="Courier New")
         pt.to_edge(LEFT)
@@ -224,45 +217,126 @@ class crypto0Scene2(Scene):
         self.remove(pt)
         self.play(ReplacementTransform(pt.copy().move_to(ORIGIN).shift(UP), ptGroup))
         
+        self.wait()
 
         #without spaces
         plaintextDefNoSpace = MarkupText('<gradient from="GREEN" to="BLUE">thisasecretmessagetosub</gradient>', font="Courier New")
         plaintextDefNoSpace.next_to(pt, RIGHT)
         self.play(Transform(plaintextDef, plaintextDefNoSpace))
 
-        #self.wait()
+        self.wait()
 
         ciphertext = Text("Ciphertext", font="Courier New")
         self.play(Write(ciphertext))
 
-        #self.wait()
+        self.wait()
 
         ct = Text("CT: ", font="Courier New")
         self.play(ReplacementTransform(ciphertext, ct))
 
-        #self.wait()
+        self.wait()
 
         ciphertextDef = MarkupText('<gradient from="RED" to="ORANGE">TIAERTESGTSBHSSCEMSAEOU</gradient>', font="Courier New")
         ciphertextDef.next_to(ct, RIGHT)
         ctGroup = VGroup(ct.copy(), ciphertextDef.copy()).to_edge(LEFT)
         self.play(ReplacementTransform(ct, ctGroup))
 
-        #self.wait()
+        self.wait()
 
         smallArrow = Arrow([-2.5,.7,0], [-2.5,.7,0], color=YELLOW)
         arrow = Arrow([-2.5,.9,0], [-2.5,-1.9,0], color=YELLOW)
         self.play(Transform(ctGroup, ctGroup.copy().shift(2*DOWN)))
         self.play(Transform(smallArrow, arrow), run_time=1)
-
-        secretSauce = MarkupText('<gradient from="YELLOW" to="PURPLE">Secret Sauce??</gradient>')
+# class secretSauce(Scene):
+#     def construct(self):
+        secretSauce = MarkupText('<gradient from="YELLOW" to="RED">Secret Sauce??</gradient>')
         secretSauce.move_to([0, -.5, 0])
         self.play(Write(secretSauce))
         
+
+        self.wait()
+        
+        self.play(*[self.clearSceneFunc(obj) for obj in self.mobjects if self.clearSceneFunc(obj)!=1])
+
+        self.wait()
+
+# class secretSauce(Scene):
+#     def construct(self):
+        teacher = makePerson(color=BLUE).shift(3*LEFT).scale(1.5)
+        students=[]
+        for i in range(3):
+            students.append(makePerson(color=PURPLE).shift(i*2*RIGHT).align_to(teacher, DOWN))
+        self.play(Create(teacher))
+        for x in students:
+            self.play(Create(x), run_time=.3)
+        self.wait()
+
+        self.play(Transform(teacher, changeMood(teacher.copy(), "teaching", BLUE, size=1.5)))
+
+        self.wait()
+
+        self.play(*[Transform(x, changeMood(x.copy(), "thinking", PURPLE)) for x in students])
+
+        self.wait()
+
+        self.play(Transform(teacher, changeMood(teacher.copy(), "happy", BLUE, size=1.5)))
+
+        self.wait()
+
+        self.play(*[Transform(x, changeMood(x.copy(), "happy", PURPLE)) for x in students])
+
+        self.wait()
+        
+        self.play(Transform(teacher, changeMood(teacher.copy(), "teaching", BLUE, size=1.5)))
+
+        self.wait()
+
 
 
  
         self.wait()
 
+    def clearSceneFunc(self, obj):
+        try:
+            return Uncreate(obj)
+        except:
+            return 1
+
+class Thumbnail(Scene):
+    def construct(self):
+        htks = Tex("How to keep secrets").shift(3*UP).scale(2)
+        self.add(htks)
+        youText = Tex("You", color=BLUE).shift(1.4*DOWN, 5*LEFT)
+        youPerson = makePerson(color=BLUE).scale(.8).shift(5*LEFT)
+        self.add(youPerson, youText)
+
+        
+        bobText = Tex("Bob", color=RED).shift(1.4*DOWN, 5*RIGHT)
+        bobPerson = makePerson(color=RED, mood="thinking").scale(.8).shift(5*RIGHT)
+        self.add(bobPerson, bobText)
+
+        dontLike = Tex("I don't").move_to([-3.5,.2,0])
+        dontLike2 = Tex("like Eve").move_to([-3.5,-.2,0])
+        self.add(dontLike, dontLike2)
+
+        a = Arrow([-2.5,0,0], [3.5,0,0])
+        self.add(a)
+
+        l=Line([.2,-2.1,0],[1,-2.1,0], color=GREEN).set_stroke(width=6)
+        a2=Arrow([1,-2.38,0],[1,-.1,0], color=GREEN)
+        self.add(l, a2)
+
+        eveText = Tex("Eve", color=GREEN).shift(1.1*DOWN)
+        evePerson = makePerson(color=GREEN, mood="evil").scale(.6)
+        eveHatTriangle = Polygon([-.3,1.8,0], [.3,1.8,0], [0,2.5,0], color = GREEN)
+        stripe1 = Line([-.2,2,0], [.2,2,0], color = GREEN)
+        stripe2 = Line([-.13,2.2,0], [.13,2.2,0], color = GREEN)
+        eveHat = VGroup(eveHatTriangle, stripe1, stripe2)
+        eveHat.scale(.6).shift(.8*DOWN)
+        eveList = [evePerson, eveText, eveHat]
+        for i in eveList:
+            i.shift(2.5*DOWN)
+        self.add(evePerson, eveText, eveHat)
 
     
     
@@ -277,7 +351,7 @@ class StickFigureScene (Scene):
         self.play(Transform(person, makePerson(color = GREEN, mood = "thinking")))
         self.play(Transform(person, makePerson(color = GREEN, mood = "happy")))
         self.play(Transform(person, makePerson(color = GREEN, mood = "sad")))
-        self.play(Transform(person, makePerson(color = GREEN, mood = "teachong")))
+        self.play(Transform(person, makePerson(color = GREEN, mood = "teaching")))
         self.wait()
 
 global makePerson
