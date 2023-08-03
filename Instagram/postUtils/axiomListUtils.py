@@ -15,6 +15,11 @@ def MakeAxiomList(scene, list, letter, **kwargs):
               leftShift = kwargs['leftShift']
         except:
               leftShift = 4
+      
+        try:
+              fontSize = kwargs['size']
+        except:
+              fontSize = 30
 
         total = len(list)
         colors = color_gradient([color1, color2], total)
@@ -22,11 +27,19 @@ def MakeAxiomList(scene, list, letter, **kwargs):
             shift = ((total/2) - i) * UP*4/total
             shift+= DOWN*1.5
 
-            num = Tex(letter, f'{i + 1}: ').scale(.75).shift(shift, leftShift*LEFT)
-
-            list[i].shift(shift).scale(.75).next_to(num, RIGHT)
-            
+            num = Tex(letter, f'{i + 1}: ', font_size = fontSize).shift(shift, leftShift*LEFT)
             num.set_color(colors[i])
-            list[i].set_color(colors[i])
+            scene.add(num)
 
-            scene.add(list[i], num)
+            try:
+                  list[i].shift(shift).set_font_size(fontSize).next_to(num, RIGHT)
+                  list[i].set_color(colors[i])
+                  scene.add(list[i], num)
+            except:
+                  prevElem = num
+                  for innerElem in list[i]:
+                        innerElem.shift(shift).set_font_size(fontSize).next_to(prevElem, buff = 0.1)
+                        innerElem.set_color(colors[i])
+                        prevElem = innerElem
+                        scene.add(innerElem)
+
