@@ -11,8 +11,9 @@ class NAME(Scene):
 
         #this would make all the text blocks with V's blue
         description.set_color_by_tex("V", BLUE)
+        outline = square(3)
 
-        self.add(title, description, description2)
+        self.add(title, description, description2, outline)
 
 
         textList = []

@@ -9,5 +9,5 @@ file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto1Codes/1
 file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto1Codes/1080p60/partial_movie_files/CurAnimation/3931933789_329969645_4132464451.mp4'
 file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto1Codes/1080p60/partial_movie_files/CurAnimation/3931933789_2120983886_4067455232.mp4'
 file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto1Codes/1080p60/partial_movie_files/CurAnimation/3931933789_329969645_2293548257.mp4'
-file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto1Codes/1080p60/partial_movie_files/CurAnimation/3931933789_978576017_2984085042.mp4'
-file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto1Codes/1080p60/partial_movie_files/CurAnimation/3931933789_329969645_2807151232.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto1Codes/1080p60/partial_movie_files/CurAnimation/3931933789_2938771023_2984085042.mp4'
+file 'file:C:/Users/rteet/OneDrive/Desktop/manimVids/media/videos/Crypto1Codes/1080p60/partial_movie_files/CurAnimation/3931933789_329969645_9495604.mp4'

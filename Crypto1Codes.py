@@ -142,14 +142,14 @@ class CurAnimation(Scene):
         self.wait()
 
         learnPigLatinTextFinal = MarkupText(
-            f'<span fgcolor="{BLUE_B}">ubscribe </span><span fgcolor="{LIGHT_BROWN}">s</span><span fgcolor="{PURPLE}">ay</span>'
-            f'<span fgcolor="{BLUE_B}">o </span><span fgcolor="{LIGHT_BROWN}">t</span>'
-            f'<span fgcolor="{BLUE_B}">earn </span><span fgcolor="{LIGHT_BROWN}">l</span>'
-            f'<span fgcolor="{BLUE_B}">ow </span><span fgcolor="{LIGHT_BROWN}">h</span>'
-            f'<span fgcolor="{BLUE_B}">o </span><span fgcolor="{LIGHT_BROWN}">t</span>'
-            f'<span fgcolor="{BLUE_B}">eak </span><span fgcolor="{LIGHT_BROWN}">sp</span>'
-            f'<span fgcolor="{BLUE_B}">ig </span><span fgcolor="{LIGHT_BROWN}">p</span>'
-            f'<span fgcolor="{BLUE_B}">atin</span><span fgcolor="{LIGHT_BROWN}">l</span>'
+            f'<span fgcolor="{BLUE_B}">ubscribe</span><span fgcolor="{LIGHT_BROWN}">s</span><span fgcolor="{PURPLE}">ay </span>'
+            f'<span fgcolor="{BLUE_B}">o</span><span fgcolor="{LIGHT_BROWN}">t</span><span fgcolor="{PURPLE}">ay </span>'
+            f'<span fgcolor="{BLUE_B}">earn</span><span fgcolor="{LIGHT_BROWN}">l</span><span fgcolor="{PURPLE}">ay </span>'
+            f'<span fgcolor="{BLUE_B}">ow</span><span fgcolor="{LIGHT_BROWN}">h</span><span fgcolor="{PURPLE}">ay </span>'
+            f'<span fgcolor="{BLUE_B}">o</span><span fgcolor="{LIGHT_BROWN}">t</span><span fgcolor="{PURPLE}">ay </span>'
+            f'<span fgcolor="{BLUE_B}">eak</span><span fgcolor="{LIGHT_BROWN}">sp</span><span fgcolor="{PURPLE}">ay </span>'
+            f'<span fgcolor="{BLUE_B}">ig</span><span fgcolor="{LIGHT_BROWN}">p</span><span fgcolor="{PURPLE}">ay </span>'
+            f'<span fgcolor="{BLUE_B}">atin</span><span fgcolor="{LIGHT_BROWN}">l</span><span fgcolor="{PURPLE}">ay </span>'
             , font="Courier New", font_size=30)
         self.play(ReplacementTransform(VGroup(learnPigLatinText3Top, learnPigLatinText5Bottom), learnPigLatinTextFinal))
 
