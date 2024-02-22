@@ -122,25 +122,32 @@ class CurAnimation(Scene):
 
         self.wait()
 
-        learnPigLatinText3Top =    MarkupText(' ubscribe  o  earn  ow  o   eak  ig  atin'
-                                     , color=BLUE_B, font="Courier New", font_size=30)
-        learnPigLatinText3Bottom = MarkupText('s         t  l     h   t  sp    p   l    '
-                                     , color=LIGHT_BROWN, font="Courier New", font_size=30).next_to(learnPigLatinText3Top, DOWN).shift(.6*LEFT)
+        learnPigLatinText3Top =    MarkupText(' ubscribe    o    earn    ow    o    eak     ig    atin'
+                                     , color=BLUE_B, font="Courier New", font_size=30).shift(.2*LEFT)
+        learnPigLatinText3Bottom = MarkupText('s           t    l       h     t   sp       p     l    '
+                                     , color=LIGHT_BROWN, font="Courier New", font_size=30).next_to(learnPigLatinText3Top, DOWN).shift(.5*LEFT)
         self.play(ReplacementTransform(learnPigLatinText2.copy(), learnPigLatinText3Top), ReplacementTransform(learnPigLatinText2, learnPigLatinText3Bottom))
 
         self.wait()
-        learnPigLatinText4Bottom = MarkupText('         s  t     l   h  t     sp  p     l'
+        learnPigLatinText4Bottom = MarkupText('         s    t       l     h    t      sp     p       l'
                                      , color=LIGHT_BROWN, font="Courier New", font_size=30,).next_to(
-                                         learnPigLatinText3Top, DOWN).shift(1.1*RIGHT)
+                                         learnPigLatinText3Top, DOWN).shift(1.115*RIGHT)
         self.play(ReplacementTransform(learnPigLatinText3Bottom, learnPigLatinText4Bottom))
 
         self.wait()
 
-        learnPigLatinText5Bottom = learnPigLatinText4Bottom.copy().shift(.55*UP)
+        learnPigLatinText5Bottom = learnPigLatinText4Bottom.copy().shift(.58*UP)
         self.play(ReplacementTransform(learnPigLatinText4Bottom, learnPigLatinText5Bottom))
 
         self.wait()
-
+        
+        learnPigLatinTextEnds = MarkupText('         ay   ay      ay    ay   ay      ay    ay      ay'
+        , color = PURPLE, font = 'Courier New', font_size=30).shift(1.07*RIGHT).shift(.047*DOWN)
+        self.play(ApplyMethod(learnPigLatinText3Top.shift, .2*LEFT),
+        ApplyMethod(learnPigLatinText5Bottom.shift, .2*LEFT))
+        self.play(Create(learnPigLatinTextEnds))
+        self.wait()
+'''
         learnPigLatinTextFinal = MarkupText(
             f'<span fgcolor="{BLUE_B}">ubscribe</span><span fgcolor="{LIGHT_BROWN}">s</span><span fgcolor="{PURPLE}">ay </span>'
             f'<span fgcolor="{BLUE_B}">o</span><span fgcolor="{LIGHT_BROWN}">t</span><span fgcolor="{PURPLE}">ay </span>'
@@ -152,8 +159,8 @@ class CurAnimation(Scene):
             f'<span fgcolor="{BLUE_B}">atin</span><span fgcolor="{LIGHT_BROWN}">l</span><span fgcolor="{PURPLE}">ay </span>'
             , font="Courier New", font_size=30)
         self.play(ReplacementTransform(VGroup(learnPigLatinText3Top, learnPigLatinText5Bottom), learnPigLatinTextFinal))
+'''
 
-        self.wait()
 
 
 #returns the mobject made of a Vgroup that is the speech bubble
@@ -176,8 +183,8 @@ def speechBubble(**kwargs):
 
     rect1 = RoundedRectangle(corner_radius=1, height=2, width=4)
     rect2 = rect1.copy()
-    rect1.pointwise_become_partial(rect1, 0, .56)
-    rect2.pointwise_become_partial(rect2, .5962, 1)
+    rect1.pointwise_become_partial(rect1, 0, .5533)
+    rect2.pointwise_become_partial(rect2, .5829, 1)
     line1 = Line([-2.5,-1.5,0],[-1.8,-.6,0])
     line2 = Line([-2.5,-1.5,0],[-1.48,-.88,0])
 
