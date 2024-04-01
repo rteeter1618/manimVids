@@ -90,7 +90,9 @@ class Crypto1Main(Scene):
         self.play(Write(learnPigLatinText))
 
         self.wait()
-
+        
+        self.play(*[self.clearSceneFunc(obj) for obj in self.mobjects if self.clearSceneFunc(obj)!=1])
+        self.wait()
 
     def clearSceneFunc(self, obj):
         try:
@@ -100,9 +102,8 @@ class Crypto1Main(Scene):
     
     def clearAll(self):
         self.play(*[self.clearSceneFunc(obj) for obj in self.mobjects if self.clearSceneFunc(obj)!=1])
-
-class CurAnimation(Scene):
-    def construct(self):
+        
+        self.wait()
         learnPigLatinText = MarkupText('<gradient from="GREEN" to="BLUE"> subscribe to learn how to speak pig latin</gradient>', font="Courier New", font_size=30)
         self.play(Write(learnPigLatinText))
 
@@ -147,6 +148,74 @@ class CurAnimation(Scene):
         ApplyMethod(learnPigLatinText5Bottom.shift, .2*LEFT))
         self.play(Create(learnPigLatinTextEnds))
         self.wait()
+
+        ovalText = MarkupText('Oval', font='Courier New', color=BLUE_B).shift(DOWN)
+        self.play(Create(ovalText), run_time=.5)
+        self.wait()
+        ovalText2 = MarkupText(f'<span fgcolor="{BLUE_B}">Oval</span><span fgcolor="{PURPLE}">yay</span>', font = 'Courier New').shift(DOWN)
+        self.play(ReplacementTransform(ovalText, ovalText2))
+        self.wait()
+
+        studentsL = []
+        studentsL.append(makePerson(color=PURPLE).shift(2*DOWN, 3*LEFT))
+        studentsL.append(makePerson(color=PURPLE).shift(2*DOWN))
+        studentsL.append(makePerson(color=PURPLE).shift(2*DOWN, 3*RIGHT))
+        bob = makePerson(color=BLUE).shift(2.5*LEFT)
+        eve = makePerson(color=GREEN).shift(.5*RIGHT)
+        teacher = makePerson(color=BLUE).scale(1.5).shift(UP, 5*RIGHT)
+        for stud in studentsL:
+            stud.shift(LEFT)
+        studentsG = VGroup(*studentsL)
+        classG = VGroup(teacher, studentsG)
+        eveText = Text("Eve", color = GREEN).shift(.55*RIGHT).shift(1.9*DOWN)
+        self.play(Create(classG), Create(eve), Create(bob), Create(eveText))
+        self.wait()
+
+        #Eve isnt invited
+        dontLikeEveBubble = speechBubble(multiLineText=['Iyay Ontday', 'Ikelay Eveyay'], textColor=GREEN).scale(.5).shift(.9*LEFT).shift(2.1*UP)
+        evilBob = changeMood(bob, 'evil', BLUE)
+        self.play(Create(dontLikeEveBubble), ReplacementTransform(bob, evilBob))
+        self.wait()
+
+        #Eve hears
+        heardThatBubble = speechBubble(multiLineText = ['Iyay Eardhay', 'Atthay'], textColor = BLUE).scale(.5).shift(2.1*RIGHT).shift(2.1*UP)
+        sadEve = changeMood(eve, 'sad', GREEN)
+
+        self.play(Create(heardThatBubble), ReplacementTransform(eve, sadEve))
+        self.wait()
+        self.clearAll()
+        self.wait()
+
+
+class CurAnimation(Scene):
+    def construct(self):
+        garrison = Text("Mr. Garrison", color=BLUE, font_size=26)
+        self.play(Create(garrison))
+        self.wait()
+
+        garrisonNew = Text("Mr. Garrison", color = BLUE, font_size=26).shift(1.95*LEFT)
+        codeArrow1 = Arrow([-1,0,0], [1,0,0], color=YELLOW)
+        bowser = Text("Bowser", color=RED, font_size=26).shift(1.45*RIGHT)
+        self.play(ReplacementTransform(garrison, garrisonNew))
+        self.wait()
+        self.play(Create(codeArrow1), Create(bowser))
+        self.wait()
+        codeGroup1=VGroup(garrisonNew, codeArrow1, bowser)
+        self.play(ReplacementTransform(codeGroup1, codeGroup1.copy().shift(2*UP)))
+        self.wait()
+        ptList = ['Homework', 'Hate', 'Gaussian', 'I']
+        ctList = ['Potatoes', 'Drink', 'Distribution', 'Turtles']
+        codeGroup = VGroup()
+        for i in range(0,4):
+            #i=0,1,2,3
+            #shift = 1,0,-1,-2
+            shift = -i+1
+            codeGroup.add(Text(ptList[i], color=BLUE, font_size=26).align_to(garrisonNew, RIGHT).shift(shift*UP))
+            codeGroup.add(codeArrow1.copy().shift((i+1)*DOWN))
+            codeGroup.add(Text(ctList[i], color=RED, font_size=26).align_to(bowser, LEFT).shift(shift*UP))
+        self.play(Create(codeGroup))
+        self.wait()
+
 '''
         learnPigLatinTextFinal = MarkupText(
             f'<span fgcolor="{BLUE_B}">ubscribe</span><span fgcolor="{LIGHT_BROWN}">s</span><span fgcolor="{PURPLE}">ay </span>'
@@ -171,20 +240,25 @@ global speechBubble
 def speechBubble(**kwargs):
     #default is blank
     words = kwargs.get("text", "")
-    text = Text(words, width=3, height=1.5)
+    textColor = kwargs.get("textColor", BLUE)
+    #borderColor = kwargs.get("borderColor", WHITE)
+    text = Text(words, width=3, height=1.5, color=textColor)
     totalHeight = 1.5
     multiLineWords = kwargs.get("multiLineText",[])
     multiLineTexts = []
     if(len(multiLineWords) > 0):
         lineHeight = totalHeight / len(multiLineWords)
         for i, line in enumerate(multiLineWords):
-            heightDiff = ((len(multiLineTexts)/2.0) - i)*totalHeight/2
-            multiLineTexts.append(Text(line, width=3, height=lineHeight).shift(heightDiff*UP))
+            heightDiff = ((len(multiLineTexts)/2.0) - i)*totalHeight + totalHeight/4
+            multiLineTexts.append(Text(line, width=3, height=lineHeight, color = textColor).shift(heightDiff*UP))
 
     rect1 = RoundedRectangle(corner_radius=1, height=2, width=4)
     rect2 = rect1.copy()
-    rect1.pointwise_become_partial(rect1, 0, .5533)
-    rect2.pointwise_become_partial(rect2, .5829, 1)
+    
+    rect1.pointwise_become_partial(rect1, 0, .56)
+    rect2.pointwise_become_partial(rect2, .5962, 1)
+    # rect1.pointwise_become_partial(rect1, 0, .5533)
+    # rect2.pointwise_become_partial(rect2, .5829, 1)
     line1 = Line([-2.5,-1.5,0],[-1.8,-.6,0])
     line2 = Line([-2.5,-1.5,0],[-1.48,-.88,0])
 
@@ -216,6 +290,7 @@ def makePerson(**kwargs):
         mood = kwargs["mood"]
     except:
         mood = "default"
+    #happy thinking teaching sad evil
     person = VGroup()
 
     torso = Line([0,1,0], [0,-.3,0], color=mainColor)
